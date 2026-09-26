@@ -2,14 +2,43 @@
 import PlanCard from '@/components/myplanpage/PlanCard';
 import SavedCard from '@/components/myplanpage/SavedCard';
 import { WorkoutContext } from '@/context/WorkoutProvider';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 
 function MyPlan() {
-  const { workoutPlan, savedWorkout } = useContext(WorkoutContext);
+  const { workoutPlan = [], savedWorkout = [] } = useContext(WorkoutContext);
+
+  // Calculate top banner stats dynamically for Today's Plan
+  const totalExercises = workoutPlan.length;
+  const totalMinutes = useMemo(() => {
+    return workoutPlan.reduce((acc: number, item: any) => acc + (item.duration || 0), 0);
+  }, [workoutPlan]);
+  const totalCalories = useMemo(() => {
+    return workoutPlan.reduce((acc: number, item: any) => acc + (item.caloriesBurned || 0), 0);
+  }, [workoutPlan]);
+
   const [activeTab, setActiveTab] = useState<'today' | 'saved'>('today');
+
   return (
     <section className="bg-[#0C0D10]">
-      <div className="container mx-auto space-y-6  text-white p-4 font-sans">
+      <div className="container mx-auto space-y-12  text-white p-4 font-inter">
+        <div>
+          <h2>My Plan</h2>
+          <p>Cap of five lifts for today. Finish them, then load more.</p>
+        </div>
+        <div className="flex justify-between items-center p-12 bg-[#13161D] rounded-2xl border border-[#232732]">
+          <div className="border-r border-gray-500 w-1/3 text-center">
+            <p>Exercises</p>
+            <span>{totalExercises}</span>
+          </div>
+          <div className="border-r border-gray-500 w-1/3 text-center">
+            <p>Minutes</p>
+            <span>{totalMinutes}</span>
+          </div>
+          <div className="w-1/3 text-center">
+            <p>Calories</p>
+            <span>{totalCalories}</span>
+          </div>
+        </div>
         {/* Tab Controls Header & Sort Dropdown */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           {/* Tab Buttons Box */}
