@@ -5,7 +5,7 @@ function Banner() {
   return (
     <section className="bg-[#0C0D10] py-12 md:py-24">
       <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8 px-16 py-32 bg-[#15171D] text-white rounded-2xl">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8 px-16 py-24 bg-[#15171D] text-white rounded-2xl">
           <div className="max-w-lg flex flex-col gap-6">
             <span className="font-inter text-xs md:text-sm font-semibold tracking-wider text-[#C2F800] uppercase">
               WORKOUT LIBRARY

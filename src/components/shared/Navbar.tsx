@@ -1,11 +1,8 @@
-'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import Navitem from '@/components/homepage/navitem/Navitem';
 
 export default function Navbar() {
-  const pathname = usePathname();
-
   return (
     <nav className=" bg-[#0C0D10] font-inter px-4 lg:px-0 border-b border-[#1C1F26]">
       <div className=" lg:container lg:mx-auto flex justify-between items-center h-16 text-white">
@@ -13,32 +10,7 @@ export default function Navbar() {
           <Image src="/assets/logo.png" alt="Logo" width={24} height={24} priority />
           <span className="font-oswald md:text-lg text-white font-bold">FITLOG</span>
         </Link>
-        <div>
-          <ul className="flex gap-4">
-            <li className="text-xs">
-              <Link
-                href="/"
-                className={
-                  pathname === '/' ? 'font-bold bg-amber-300 p-2 rounded-2xl ' : 'text-gray-500'
-                }
-              >
-                Workouts
-              </Link>
-            </li>
-            <li className="text-xs">
-              <Link
-                href="/myplan"
-                className={
-                  pathname === '/myplan'
-                    ? 'font-bold bg-amber-300 p-2 rounded-2xl '
-                    : 'text-gray-500'
-                }
-              >
-                My Plans
-              </Link>
-            </li>
-          </ul>
-        </div>
+        <Navitem />
         <div className="hidden md:block">
           <div className="flex gap-4">
             <Link href="/myplan" className="text-[#D1D5DB] flex items-center gap-1 text-sm">
