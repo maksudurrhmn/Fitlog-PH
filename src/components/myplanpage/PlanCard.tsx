@@ -2,6 +2,9 @@ import Image from 'next/image';
 import { WorkoutContext } from '@/context/WorkoutProvider';
 import React, { useContext } from 'react';
 import EmptyCard from './EmptyCard';
+import Link from 'next/link';
+import RemoveFromPlan from './RemoveFromPlan';
+import MarkAsDone from './MarkAsDone';
 
 function PlanCard() {
   const { workoutPlan } = useContext(WorkoutContext);
@@ -74,39 +77,16 @@ function PlanCard() {
 
             {/* Right Side: Action Buttons */}
             <div className="flex items-center gap-3 w-full sm:w-auto justify-end pt-2 sm:pt-0">
-              <button
-                type="button"
-                className="border border-gray-700 hover:bg-gray-800 text-gray-200 text-xs font-semibold px-4 py-2 rounded-full transition-colors cursor-pointer"
-              >
-                View Details
-              </button>
-              <button
-                type="button"
-                className="flex items-center gap-1.5 bg-[#CCFF00] hover:bg-[#b8e600] text-black text-xs font-bold px-4 py-2 rounded-full transition-colors cursor-pointer"
-              >
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={3}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-                Mark as Done
-              </button>
-              <button
-                type="button"
-                className="text-gray-500 hover:text-white p-1 transition-colors cursor-pointer"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
+              <Link href={`/workout/${workout.id}`}>
+                <button
+                  type="button"
+                  className="border border-gray-700 hover:bg-gray-800 text-gray-200 text-xs font-semibold px-4 py-2 rounded-full transition-colors cursor-pointer"
+                >
+                  View Details
+                </button>
+              </Link>
+              <MarkAsDone workout={workout}></MarkAsDone>
+              <RemoveFromPlan workout={workout}></RemoveFromPlan>
             </div>
           </div>
         ))

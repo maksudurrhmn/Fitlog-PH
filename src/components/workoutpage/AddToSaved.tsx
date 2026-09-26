@@ -8,16 +8,22 @@ import { toast } from 'react-toastify';
 function AddToSaved({ workout }: { workout: Workout }) {
   const { savedWorkout, setSavedWorkout } = useContext(WorkoutContext);
 
-  const handleAddToSaved = () => {
-    setSavedWorkout([...savedWorkout, workout]);
-    toast.success('Added to saved');
+  const handleAddToSaved = (workout: Workout) => {
+    const isAlreadyAdded = savedWorkout.some((item) => item.id === workout.id);
+
+    if (!isAlreadyAdded) {
+      setSavedWorkout((prev) => [...prev, workout]);
+      toast.success(`Added ${workout.name} to plan`);
+    } else {
+      toast.warning('Already Added');
+    }
   };
   return (
     <button
       type="button"
       className="flex items-center gap-2 bg-transparent hover:bg-gray-800/50 text-gray-300 hover:text-white border border-gray-700 px-5 py-2.5 rounded-xl text-sm transition-colors cursor-pointer"
       onClick={() => {
-        handleAddToSaved();
+        handleAddToSaved(workout);
       }}
     >
       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

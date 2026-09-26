@@ -8,9 +8,15 @@ import { toast } from 'react-toastify';
 function AddToPlan({ workout }: { workout: Workout }) {
   const { workoutPlan, setWorkoutPlan } = useContext(WorkoutContext);
 
-  const handleAddToPlan = () => {
-    setWorkoutPlan([...workoutPlan, workout]);
-    toast.success('Added to my plan');
+  const handleAddToPlan = (workout: Workout) => {
+    const isAlreadyAdded = workoutPlan.some((item) => item.id === workout.id);
+
+    if (!isAlreadyAdded) {
+      setWorkoutPlan((prev) => [...prev, workout]);
+      toast.success(`Added ${workout.name} to plan`);
+    } else {
+      toast.warning('Already Added');
+    }
   };
 
   return (
@@ -18,7 +24,7 @@ function AddToPlan({ workout }: { workout: Workout }) {
       type="button"
       className="flex cursor-pointer items-center gap-2 rounded-xl bg-[#CCFF00] px-5 py-2.5 text-sm font-semibold text-black transition-colors hover:bg-[#b8e600]"
       onClick={() => {
-        handleAddToPlan();
+        handleAddToPlan(workout);
       }}
     >
       <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
