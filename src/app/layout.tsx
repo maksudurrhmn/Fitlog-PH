@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import Navbar from '@/components/shared/Navbar';
+import Navbar from '@/components/shared/navbar/Navbar';
 import { Inter, Oswald } from 'next/font/google';
 import Footer from '@/components/shared/Footer';
+import WorkoutProvider from '@/context/WorkoutProvider';
+import { ToastContainer } from 'react-toastify';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -27,9 +29,12 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       className={`${inter.variable} ${oswald.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col ">
-        <Navbar />
-        {children}
-        <Footer />
+        <WorkoutProvider>
+          <Navbar />
+          {children}
+          <Footer />
+          <ToastContainer />
+        </WorkoutProvider>
       </body>
     </html>
   );

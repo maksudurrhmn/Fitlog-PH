@@ -1,3 +1,5 @@
+import AddToPlan from '@/components/workoutpage/AddToPlan';
+import AddToSaved from '@/components/workoutpage/AddToSaved';
 import type { Workout } from '@/types/workout';
 import Image from 'next/image';
 
@@ -160,35 +162,9 @@ export default async function WorkoutDetails({ params }: { params: Promise<{ id:
 
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-4 pt-4">
-            <button
-              type="button"
-              className="flex items-center gap-2 bg-[#CCFF00] hover:bg-[#b8e600] text-black font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors cursor-pointer"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 4v16m8-8H4"
-                />
-              </svg>
-              Add to today's plan
-            </button>
+            <AddToPlan workout={workout} />
 
-            <button
-              type="button"
-              className="flex items-center gap-2 bg-transparent hover:bg-gray-800/50 text-gray-300 hover:text-white border border-gray-700 px-5 py-2.5 rounded-xl text-sm transition-colors cursor-pointer"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-                />
-              </svg>
-              Save for later
-            </button>
+            <AddToSaved workout={workout} />
           </div>
         </div>
       </div>

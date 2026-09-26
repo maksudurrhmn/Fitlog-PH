@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import Navitem from '@/components/homepage/navitem/Navitem';
+import Navitem from '@/components/shared/navbar/Navitem';
 
 export default function Navbar() {
   return (

@@ -1,18 +1,9 @@
 import { Workout } from '@/types/workout';
-import WorkoutCard from './card/WorkoutCard';
-
-async function getLibrary() {
-  const res = await fetch('https://api.abcz.workers.dev/api/fitlog');
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch library');
-  }
-
-  return res.json();
-}
+import WorkoutCard from './WorkoutCard';
+import getWorkout from '@/lib/getWorkout';
 
 async function Library() {
-  const data = await getLibrary();
+  const data = await getWorkout();
 
   return (
     <section id="Library" className="bg-[#0C0D10] text-white py-8 md:py-16 lg:py-24">
