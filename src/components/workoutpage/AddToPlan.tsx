@@ -4,21 +4,21 @@ import { WorkoutContext } from '@/context/WorkoutProvider';
 import type { Workout } from '@/types/workout';
 import { Plus } from 'lucide-react';
 import { useContext } from 'react';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 
 function AddToPlan({ workout }: { workout: Workout }) {
   const { workoutPlan, setWorkoutPlan } = useContext(WorkoutContext);
 
   const handleAddToPlan = (workout: Workout) => {
     if (workoutPlan.length === 5) {
-      toast.warning('Cap of five lifts for today. Finish them, then load more.');
+      toast('Cap of five lifts for today. Finish them, then load more.');
       return;
     }
 
     const isAlreadyAdded = workoutPlan.some((item) => item.id === workout.id);
 
     if (isAlreadyAdded) {
-      toast.warning('Already in your plan');
+      toast('Already in your plan');
       return;
     }
 

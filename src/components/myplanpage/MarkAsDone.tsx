@@ -2,7 +2,7 @@
 import { WorkoutContext } from '@/context/WorkoutProvider';
 import { Workout } from '@/types/workout';
 import React, { useContext } from 'react';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 
 function MarkAsDone({ workout }: { workout: Workout }) {
   const { workoutPlan, setWorkoutPlan } = useContext(WorkoutContext);

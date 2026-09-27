@@ -4,7 +4,7 @@ import { WorkoutContext } from '@/context/WorkoutProvider';
 import type { Workout } from '@/types/workout';
 import { Bookmark } from 'lucide-react';
 import { useContext } from 'react';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 
 function AddToSaved({ workout }: { workout: Workout }) {
   const { savedWorkout, setSavedWorkout } = useContext(WorkoutContext);
@@ -16,7 +16,7 @@ function AddToSaved({ workout }: { workout: Workout }) {
       setSavedWorkout((prev) => [...prev, workout]);
       toast.success(`Added to saved`);
     } else {
-      toast.warning('Already in your saved');
+      toast('Already in your saved');
     }
   };
   return (

@@ -2,14 +2,14 @@
 import { WorkoutContext } from '@/context/WorkoutProvider';
 import { Workout } from '@/types/workout';
 import React, { useContext } from 'react';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 
 function RemoveFromSaved({ workout }: { workout: Workout }) {
   const { savedWorkout, setSavedWorkout } = useContext(WorkoutContext);
 
   const handleRemoveFromSaved = (workout: Workout) => {
     setSavedWorkout(savedWorkout.filter((item) => item.id !== workout.id));
-    toast.warning('Removed Successfully');
+    toast('Removed Successfully');
   };
 
   return (

@@ -2,14 +2,14 @@
 import { WorkoutContext } from '@/context/WorkoutProvider';
 import { Workout } from '@/types/workout';
 import React, { useContext } from 'react';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 
 function RemoveFromPlan({ workout }: { workout: Workout }) {
   const { workoutPlan, setWorkoutPlan } = useContext(WorkoutContext);
 
   const handleRemoveFromPlan = (workout: Workout) => {
     setWorkoutPlan(workoutPlan.filter((item) => item.id !== workout.id));
-    toast.warning('Removed Successfully');
+    toast('Removed Successfully');
   };
 
   return (
