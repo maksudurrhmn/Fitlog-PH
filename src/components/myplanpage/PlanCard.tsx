@@ -5,15 +5,20 @@ import EmptyCard from './EmptyCard';
 import Link from 'next/link';
 import RemoveFromPlan from './RemoveFromPlan';
 import MarkAsDone from './MarkAsDone';
+import { Workout } from '@/types/workout';
 
-function PlanCard() {
-  const { workoutPlan } = useContext(WorkoutContext);
+type PlanCardProps = {
+  workouts: Workout[];
+};
+
+function PlanCard({ workouts }: PlanCardProps) {
+  // const { workoutPlan } = useContext(WorkoutContext);
   return (
     <div className="space-y-4">
-      {workoutPlan.length === 0 ? (
+      {workouts.length === 0 ? (
         <EmptyCard></EmptyCard>
       ) : (
-        workoutPlan.map((workout) => (
+        workouts.map((workout) => (
           <div
             key={workout.id}
             className="bg-[#15171D] border border-gray-800/60 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"

@@ -4,15 +4,20 @@ import React, { useContext } from 'react';
 import EmptyCard from './EmptyCard';
 import Link from 'next/link';
 import RemoveFromSaved from './RemoveFromSaved';
+import { Workout } from '@/types/workout';
 
-function SavedCard() {
+type SavedCardProps = {
+  workouts: Workout[];
+};
+
+function SavedCard({ workouts }: SavedCardProps) {
   const { savedWorkout } = useContext(WorkoutContext);
   return (
     <div className="space-y-4">
-      {savedWorkout.length === 0 ? (
+      {workouts.length === 0 ? (
         <EmptyCard></EmptyCard>
       ) : (
-        savedWorkout.map((workout) => (
+        workouts.map((workout) => (
           <div
             key={workout.id}
             className="bg-[#15171D] border border-gray-800/60 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"

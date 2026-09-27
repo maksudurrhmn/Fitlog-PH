@@ -20,6 +20,26 @@ function MyPlan() {
     0
   );
 
+  const [sortBy, setSortBy] = useState<'duration' | 'calories' | 'rating'>('duration');
+
+  const sortedPlan = useMemo(() => {
+    return [...currentPlan].sort((a, b) => {
+      if (sortBy === 'duration') {
+        return b.duration - a.duration;
+      }
+
+      if (sortBy === 'calories') {
+        return b.caloriesBurned - a.caloriesBurned;
+      }
+
+      if (sortBy === 'rating') {
+        return b.rating - a.rating;
+      }
+
+      return 0;
+    });
+  }, [currentPlan, sortBy]);
+
   return (
     <section className="bg-[#0C0D10]">
       <div className="container mx-auto space-y-12  text-white p-4 font-inter">
@@ -73,16 +93,21 @@ function MyPlan() {
           <div className="flex items-center space-x-2">
             <span className="text-xs text-gray-400 font-medium">Sort By</span>
             <select
-              defaultValue="Duration"
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as 'duration' | 'calories' | 'rating')}
               className="bg-[#15171D] text-gray-200 text-xs rounded-xl px-4 py-2 border border-gray-800/60 focus:outline-none focus:border-[#CCFF00] cursor-pointer"
             >
-              <option value="Duration">Duration</option>
-              <option value="Calories">Calories</option>
-              <option value="Rating">Rating</option>
+              <option value="duration">Duration</option>
+              <option value="calories">Calories</option>
+              <option value="rating">Rating</option>
             </select>
           </div>
         </div>
-        {activeTab === 'today' ? <PlanCard></PlanCard> : <SavedCard></SavedCard>}
+        {activeTab === 'today' ? (
+          <PlanCard workouts={sortedPlan}></PlanCard>
+        ) : (
+          <SavedCard workouts={sortedPlan}></SavedCard>
+        )}
       </div>
     </section>
   );
