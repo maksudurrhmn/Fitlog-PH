@@ -2,6 +2,7 @@ import AddToPlan from '@/components/workoutpage/AddToPlan';
 import AddToSaved from '@/components/workoutpage/AddToSaved';
 import type { Workout } from '@/types/workout';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 
 async function getWorkout(workoutId: string): Promise<Workout> {
   const res = await fetch('https://api.abcz.workers.dev/api/fitlog');
@@ -15,7 +16,7 @@ async function getWorkout(workoutId: string): Promise<Workout> {
   const workout = workouts.find((workout) => workout.id === Number(workoutId));
 
   if (!workout) {
-    throw new Error('Workout not found');
+    notFound();
   }
 
   return workout;
