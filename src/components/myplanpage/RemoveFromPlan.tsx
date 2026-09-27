@@ -9,7 +9,7 @@ function RemoveFromPlan({ workout }: { workout: Workout }) {
 
   const handleRemoveFromPlan = (workout: Workout) => {
     setWorkoutPlan(workoutPlan.filter((item) => item.id !== workout.id));
-    toast('Removed Successfully');
+    toast.success('Removed Successfully');
   };
 
   return (

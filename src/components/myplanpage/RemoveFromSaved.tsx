@@ -9,7 +9,7 @@ function RemoveFromSaved({ workout }: { workout: Workout }) {
 
   const handleRemoveFromSaved = (workout: Workout) => {
     setSavedWorkout(savedWorkout.filter((item) => item.id !== workout.id));
-    toast('Removed Successfully');
+    toast.success('Removed Successfully');
   };
 
   return (

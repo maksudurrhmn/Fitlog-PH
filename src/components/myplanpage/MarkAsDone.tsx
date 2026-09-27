@@ -9,7 +9,7 @@ function MarkAsDone({ workout }: { workout: Workout }) {
 
   const handleMarkAsDone = (workout: Workout) => {
     setWorkoutPlan(workoutPlan.filter((item) => item.id !== workout.id));
-    toast.success('Done Successfully');
+    toast.success('Great Work! Keep it up');
   };
 
   return (

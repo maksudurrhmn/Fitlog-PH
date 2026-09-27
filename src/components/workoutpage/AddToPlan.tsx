@@ -11,14 +11,14 @@ function AddToPlan({ workout }: { workout: Workout }) {
 
   const handleAddToPlan = (workout: Workout) => {
     if (workoutPlan.length === 5) {
-      toast('Cap of five lifts for today. Finish them, then load more.');
+      toast.error('Cap of five lifts for today. Finish them, then load more.');
       return;
     }
 
     const isAlreadyAdded = workoutPlan.some((item) => item.id === workout.id);
 
     if (isAlreadyAdded) {
-      toast('Already in your plan');
+      toast.error('Already in your plan');
       return;
     }
 

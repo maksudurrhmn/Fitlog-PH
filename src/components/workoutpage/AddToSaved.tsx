@@ -16,7 +16,7 @@ function AddToSaved({ workout }: { workout: Workout }) {
       setSavedWorkout((prev) => [...prev, workout]);
       toast.success(`Added to saved`);
     } else {
-      toast('Already in your saved');
+      toast.error('Already in your saved');
     }
   };
   return (

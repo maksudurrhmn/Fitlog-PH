@@ -34,7 +34,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
           {children}
           <Footer />
           <Toaster
-            position="top-right"
+            position="top-center"
             reverseOrder={false}
             gutter={8}
             containerClassName=""
@@ -43,7 +43,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
             toastOptions={{
               // Define default options
               className: '',
-              duration: 5000,
+              duration: 3000,
               removeDelay: 1000,
               style: {
                 background: '#363636',
