@@ -4,7 +4,7 @@ import Navbar from '@/components/shared/navbar/Navbar';
 import { Inter, Oswald } from 'next/font/google';
 import Footer from '@/components/shared/Footer';
 import WorkoutProvider from '@/context/WorkoutProvider';
-import { ToastContainer } from 'react-toastify';
+import { Slide, ToastContainer, Zoom } from 'react-toastify';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -33,7 +33,19 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
           <Navbar />
           {children}
           <Footer />
-          <ToastContainer />
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar
+            newestOnTop
+            closeOnClick={false}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            transition={Zoom}
+          />
         </WorkoutProvider>
       </body>
     </html>

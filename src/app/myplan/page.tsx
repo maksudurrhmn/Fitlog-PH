@@ -7,16 +7,18 @@ import React, { useContext, useMemo, useState } from 'react';
 function MyPlan() {
   const { workoutPlan = [], savedWorkout = [] } = useContext(WorkoutContext);
 
-  // Calculate top banner stats dynamically for Today's Plan
-  const totalExercises = workoutPlan.length;
-  const totalMinutes = useMemo(() => {
-    return workoutPlan.reduce((acc: number, item: any) => acc + (item.duration || 0), 0);
-  }, [workoutPlan]);
-  const totalCalories = useMemo(() => {
-    return workoutPlan.reduce((acc: number, item: any) => acc + (item.caloriesBurned || 0), 0);
-  }, [workoutPlan]);
-
   const [activeTab, setActiveTab] = useState<'today' | 'saved'>('today');
+
+  const currentPlan = activeTab === 'today' ? workoutPlan : savedWorkout;
+
+  const totalExercises = currentPlan.length;
+
+  const totalMinutes = currentPlan.reduce((total, workout) => total + (workout.duration || 0), 0);
+
+  const totalCalories = currentPlan.reduce(
+    (total, workout) => total + (workout.caloriesBurned || 0),
+    0
+  );
 
   return (
     <section className="bg-[#0C0D10]">

@@ -1,12 +1,15 @@
 import Banner from '@/components/homepage/Banner';
 import Library from '@/components/homepage/librarysection/Library';
-import Image from 'next/image';
+import LibrarySkeleton from '@/components/homepage/librarysection/LibrarySkeleton';
+import { Suspense } from 'react';
 
 export default function Home() {
   return (
     <div>
       <Banner />
-      <Library />
+      <Suspense fallback={<LibrarySkeleton />}>
+        <Library />
+      </Suspense>
     </div>
   );
 }

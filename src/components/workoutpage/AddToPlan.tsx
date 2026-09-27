@@ -9,14 +9,20 @@ function AddToPlan({ workout }: { workout: Workout }) {
   const { workoutPlan, setWorkoutPlan } = useContext(WorkoutContext);
 
   const handleAddToPlan = (workout: Workout) => {
+    if (workoutPlan.length === 5) {
+      toast.warning('Cap of five lifts for today. Finish them, then load more.');
+      return;
+    }
+
     const isAlreadyAdded = workoutPlan.some((item) => item.id === workout.id);
 
-    if (!isAlreadyAdded) {
-      setWorkoutPlan((prev) => [...prev, workout]);
-      toast.success(`Added ${workout.name} to plan`);
-    } else {
-      toast.warning('Already Added');
+    if (isAlreadyAdded) {
+      toast.warning('Already in your plan');
+      return;
     }
+
+    setWorkoutPlan((prev) => [...prev, workout]);
+    toast.success("Added to Today's plan");
   };
 
   return (

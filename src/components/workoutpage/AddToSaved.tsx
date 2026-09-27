@@ -13,9 +13,9 @@ function AddToSaved({ workout }: { workout: Workout }) {
 
     if (!isAlreadyAdded) {
       setSavedWorkout((prev) => [...prev, workout]);
-      toast.success(`Added ${workout.name} to plan`);
+      toast.success(`Added to saved`);
     } else {
-      toast.warning('Already Added');
+      toast.warning('Already in your saved');
     }
   };
   return (
