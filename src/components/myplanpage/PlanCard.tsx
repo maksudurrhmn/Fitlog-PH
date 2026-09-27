@@ -1,18 +1,16 @@
 import Image from 'next/image';
-import { WorkoutContext } from '@/context/WorkoutProvider';
-import React, { useContext } from 'react';
 import EmptyCard from './EmptyCard';
 import Link from 'next/link';
 import RemoveFromPlan from './RemoveFromPlan';
 import MarkAsDone from './MarkAsDone';
 import { Workout } from '@/types/workout';
+import { Star } from 'lucide-react';
 
 type PlanCardProps = {
   workouts: Workout[];
 };
 
 function PlanCard({ workouts }: PlanCardProps) {
-  // const { workoutPlan } = useContext(WorkoutContext);
   return (
     <div className="space-y-4">
       {workouts.length === 0 ? (
@@ -23,7 +21,7 @@ function PlanCard({ workouts }: PlanCardProps) {
             key={workout.id}
             className="bg-[#15171D] border border-gray-800/60 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
           >
-            {/* Left Side: Thumbnail & Exercise Specs */}
+            {/* Left Side Thumbnail & Exercise Specs */}
             <div className="flex items-center gap-4">
               <div className="relative w-28 h-20 sm:w-32 sm:h-20 rounded-xl overflow-hidden bg-gray-900 shrink-0">
                 <Image src={workout.image} alt={workout.name} fill className="object-cover" />
@@ -67,20 +65,14 @@ function PlanCard({ workouts }: PlanCardProps) {
                     {workout.caloriesBurned}
                   </span>
                   <span className="flex items-center gap-1">
-                    <svg
-                      className="w-3.5 h-3.5 text-yellow-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
+                    <Star className="w-3 h-3 text-[#CCFF00]" />
                     {workout.rating}
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Right Side: Action Buttons */}
+            {/* Right Side Action Buttons */}
             <div className="flex items-center gap-3 w-full sm:w-auto justify-end pt-2 sm:pt-0">
               <Link href={`/workout/${workout.id}`}>
                 <button

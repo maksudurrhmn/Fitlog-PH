@@ -14,7 +14,7 @@ export default function WorkoutCard({ workout }: WorkoutCardProps) {
         <div className="p-5">
           <div className="flex items-center justify-between gap-4">
             <div>
-              <h3 className="text-xl font-bold font-oswald uppercase">{workout.name}</h3>
+              <h3 className="text-xl font-bold font-oswald text-white uppercase">{workout.name}</h3>
               <h4 className="my-2 text-[#9CA3AF] text-sm font-inter">{workout.equipment}</h4>
 
               <div className="mt-2 flex flex-wrap gap-2">

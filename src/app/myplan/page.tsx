@@ -8,9 +8,9 @@ function MyPlan() {
   const { workoutPlan = [], savedWorkout = [] } = useContext(WorkoutContext);
 
   const [activeTab, setActiveTab] = useState<'today' | 'saved'>('today');
-
+  // Checking current tab
   const currentPlan = activeTab === 'today' ? workoutPlan : savedWorkout;
-
+  // Metrics
   const totalExercises = currentPlan.length;
 
   const totalMinutes = currentPlan.reduce((total, workout) => total + (workout.duration || 0), 0);
@@ -19,7 +19,7 @@ function MyPlan() {
     (total, workout) => total + (workout.caloriesBurned || 0),
     0
   );
-
+  // Sorting functionality
   const [sortBy, setSortBy] = useState<'duration' | 'calories' | 'rating'>('duration');
 
   const sortedPlan = useMemo(() => {
@@ -41,29 +41,30 @@ function MyPlan() {
   }, [currentPlan, sortBy]);
 
   return (
-    <section className="bg-[#0C0D10]">
-      <div className="container mx-auto space-y-12  text-white p-4 font-inter">
-        <div>
-          <h2>My Plan</h2>
-          <p>Cap of five lifts for today. Finish them, then load more.</p>
+    <section className="bg-[#0C0D10] h-screen">
+      <div className="container mx-auto space-y-10  text-white p-4 font-inter">
+        <div className="mt-8">
+          <h2 className="font-oswald font-semibold text-white uppercase text-2xl mb-2">My Plan</h2>
+          <p className="font-inter text-sm lg:text-base text-[#8A92A0]">
+            Cap of five lifts for today. Finish them, then load more.
+          </p>
         </div>
         <div className="flex justify-between items-center p-12 bg-[#13161D] rounded-2xl border border-[#232732]">
           <div className="border-r border-gray-500 w-1/3 text-center">
-            <p>Exercises</p>
-            <span>{totalExercises}</span>
+            <p className="font-inter text-sm text-[#8A92A0]">Exercises</p>
+            <span className="font-oswald font-bold text-3xl text-[#CCFF00]">{totalExercises}</span>
           </div>
           <div className="border-r border-gray-500 w-1/3 text-center">
-            <p>Minutes</p>
-            <span>{totalMinutes}</span>
+            <p className="font-inter text-sm  text-[#8A92A0]">Minutes</p>
+            <span className="font-oswald font-bold text-3xl">{totalMinutes}</span>
           </div>
           <div className="w-1/3 text-center">
-            <p>Calories</p>
-            <span>{totalCalories}</span>
+            <p className="font-inter text-sm  text-[#8A92A0]">Calories</p>
+            <span className="font-oswald font-bold text-3xl">{totalCalories}</span>
           </div>
         </div>
-        {/* Tab Controls Header & Sort Dropdown */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          {/* Tab Buttons Box */}
+          {/* Tab Buttons */}
           <div className="bg-[#15171D] p-1 rounded-xl border border-gray-800/60 flex items-center space-x-1">
             <button
               type="button"
@@ -89,7 +90,7 @@ function MyPlan() {
             </button>
           </div>
 
-          {/* Hard-Coded Sort Dropdown */}
+          {/* Sorting Dropdown */}
           <div className="flex items-center space-x-2">
             <span className="text-xs text-gray-400 font-medium">Sort By</span>
             <select
@@ -103,6 +104,7 @@ function MyPlan() {
             </select>
           </div>
         </div>
+        {/* Card based on selected Tab and Sorting */}
         {activeTab === 'today' ? (
           <PlanCard workouts={sortedPlan}></PlanCard>
         ) : (

@@ -5,9 +5,9 @@ import { usePathname } from 'next/navigation';
 function Navitem() {
   const pathname = usePathname();
   return (
-    <div>
+    <div className="hidden lg:block">
       <ul className="flex gap-4">
-        <li className="text-sm">
+        <li className="text-sm font-inter">
           <Link
             href="/"
             className={
@@ -19,7 +19,7 @@ function Navitem() {
             Workouts
           </Link>
         </li>
-        <li className="text-sm">
+        <li className="text-sm font-inter">
           <Link
             href="/myplan"
             className={
@@ -28,7 +28,7 @@ function Navitem() {
                 : 'text-[#9CA3AF]'
             }
           >
-            My Plans
+            My Plan
           </Link>
         </li>
       </ul>

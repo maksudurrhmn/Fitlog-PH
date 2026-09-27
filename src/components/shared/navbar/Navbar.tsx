@@ -12,7 +12,7 @@ export default function Navbar() {
           <span className="font-oswald md:text-lg text-white font-bold">FITLOG</span>
         </Link>
         <Navitem />
-        <div className="hidden md:block">
+        <div className="">
           <NavCounter></NavCounter>
         </div>
       </div>
