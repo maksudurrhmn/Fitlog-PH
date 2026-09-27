@@ -41,7 +41,7 @@ function MyPlan() {
   }, [currentPlan, sortBy]);
 
   return (
-    <section className="bg-[#0C0D10] h-screen">
+    <section className="bg-[#0C0D10]">
       <div className="container mx-auto space-y-10  text-white p-4 font-inter">
         <div className="mt-8">
           <h2 className="font-oswald font-semibold text-white uppercase text-2xl mb-2">My Plan</h2>
