@@ -4,7 +4,7 @@ A modern workout planning web application built with Next.js. Browse workouts, v
 
 ## 🔗 Live Demo
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-CCFF00?style=for-the-badge&logo=vercel&logoColor=black)](YOUR_LIVE_LINK_HERE)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-CCFF00?style=for-the-badge&logo=vercel&logoColor=black)](https://fitlogph.vercel.app)
 
 ## 🚀 Technologies Used
 
